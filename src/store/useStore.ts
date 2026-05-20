@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Product } from '@/types/product';
+import { Order, OrderStatus } from '@/types/order';
 
 export interface CartItem extends Product {
   quantity: number;
@@ -9,6 +10,7 @@ export interface CartItem extends Product {
 interface StoreState {
   products: Product[];
   cart: CartItem[];
+  orders: Order[];
   addProduct: (product: Product) => void;
   updateProduct: (id: string, product: Partial<Product>) => void;
   deleteProduct: (id: string) => void;
@@ -16,6 +18,8 @@ interface StoreState {
   removeFromCart: (id: string) => void;
   updateCartQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
+  addOrder: (order: Order) => void;
+  updateOrderStatus: (id: string, status: OrderStatus) => void;
 }
 
 export const useStore = create<StoreState>()(
@@ -23,6 +27,7 @@ export const useStore = create<StoreState>()(
     (set) => ({
       products: [],
       cart: [],
+      orders: [],
       
       addProduct: (product) => set((state) => ({ products: [...state.products, product] })),
       updateProduct: (id, updatedFields) => set((state) => ({
@@ -52,6 +57,10 @@ export const useStore = create<StoreState>()(
         )
       })),
       clearCart: () => set({ cart: [] }),
+      addOrder: (order) => set((state) => ({ orders: [order, ...state.orders] })),
+      updateOrderStatus: (id, status) => set((state) => ({
+        orders: state.orders.map(o => o.id === id ? { ...o, status } : o)
+      })),
     }),
     {
       name: 'ecommerce-storage',
