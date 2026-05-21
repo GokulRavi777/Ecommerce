@@ -2,12 +2,14 @@
 
 import { useStore } from '@/store/useStore';
 import { notFound } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, use } from 'react';
 import { motion } from 'framer-motion';
 import { ShoppingCart, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
+export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
   const { products, addToCart } = useStore();
   const [mounted, setMounted] = useState(false);
 
@@ -17,7 +19,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
 
   if (!mounted) return <div className="h-96 flex items-center justify-center">Loading...</div>;
 
-  const product = products.find(p => p.id === params.id);
+  const product = products.find(p => p.id === id);
 
   if (!product) {
     return notFound();
@@ -63,7 +65,10 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           </div>
 
           <button
-            onClick={() => addToCart(product)}
+            onClick={() => {
+              addToCart(product);
+              toast.success(`${product.name} added to cart!`);
+            }}
             disabled={product.stock === 0}
             className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white text-lg font-semibold py-4 rounded-xl transition-colors flex items-center justify-center space-x-2"
           >

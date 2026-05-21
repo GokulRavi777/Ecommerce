@@ -5,6 +5,7 @@ import { useStore } from '@/store/useStore';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ShoppingBag } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 interface ProductCardProps {
   product: Product;
@@ -71,6 +72,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           onClick={(e) => {
             e.preventDefault();
             addToCart(product);
+            toast.success(`${product.name} added to cart!`);
           }}
           disabled={product.stock === 0}
           className="bg-slate-900 hover:bg-violet-600 disabled:bg-slate-200 disabled:text-slate-400 text-white p-4 rounded-2xl transition-all shadow-xl shadow-slate-900/20 hover:shadow-violet-600/30 flex items-center justify-center group/btn"
