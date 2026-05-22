@@ -1,0 +1,83 @@
+[
+  {
+    "id": "1",
+    "name": "Dual-Tip Pastel Brush Pens",
+    "description": "Premium 12-pack brush pens featuring a flexible brush tip on one end and a fine 0.4mm bullet tip on the other. Ideal for modern calligraphy, hand lettering, and journal illustration in soft, beautiful pastel colors.",
+    "price": 499,
+    "imageUrl": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?q=80&w=1976&auto=format&fit=crop",
+    "category": "Pens & Markers",
+    "stock": 13
+  },
+  {
+    "id": "2",
+    "name": "Leather-Bound Bullet Journal",
+    "description": "Exquisite A5 dotted journal wrapped in cruelty-free vegan leather. Featuring ultra-thick 160 GSM ink-proof paper, a secure elastic band, two ribbon markers, and a handy back pocket. Designed to keep your ideas organized.",
+    "price": 899,
+    "imageUrl": "https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=1970&auto=format&fit=crop",
+    "category": "Notebooks",
+    "stock": 8
+  },
+  {
+    "id": "3",
+    "name": "Smart Reusable Notebook",
+    "description": "The ultimate fusion of traditional writing and digital convenience. Write smoothly with the included erasable pen, scan your notes using the app to upload to cloud services, then wipe the pages clean with a damp cloth to reuse infinitely.",
+    "price": 1599,
+    "imageUrl": "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1974&auto=format&fit=crop",
+    "category": "Notebooks",
+    "stock": 4
+  },
+  {
+    "id": "4",
+    "name": "Ergonomic Brass Fountain Pen",
+    "description": "Heirloom-quality fountain pen precision-crafted from solid raw brass. Features a medium iridium nib made in Germany, perfectly balanced weight distribution for long writing sessions, and a timeless, rustic golden-brown patina finish.",
+    "price": 1299,
+    "imageUrl": "https://i1-c.pinimg.com/1200x/02/99/32/029932822d976da6a98bd7d5770a1567.jpg",
+    "category": "Pens & Markers",
+    "stock": 6
+  },
+  {
+    "id": "5",
+    "name": "Minimalist Acrylic Desk Organizer",
+    "description": "Crystal-clear acrylic organizer with polished rounded edges. Provides six dedicated compartments for storing pens, scissors, sticky notes, and paperclips. Creates an elegant, clutter-free workspace that promotes mental clarity.",
+    "price": 799,
+    "imageUrl": "https://i1-c.pinimg.com/1200x/2c/db/59/2cdb595d0bd120b4c3a3c4ec3640ad4b.jpg",
+    "category": "Desk Accessories",
+    "stock": 12
+  },
+  {
+    "id": "6",
+    "name": "Self-Healing Pastel Cutting Mat",
+    "description": "Double-sided A3 cutting mat with a modern light-mint color tone. Features an advanced self-healing core that instantly reseals after craft cuts, precise grid lines, angles, and measurements for crafting, stitching, and scrapbooking.",
+    "price": 649,
+    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop",
+    "category": "Desk Accessories",
+    "stock": 3
+  },
+  {
+    "id": "7",
+    "name": "Aesthetic Washi Tape Set (10 Rolls)",
+    "description": "Curated collection of 10 washi tape rolls in beautiful, earthy color gradients and subtle minimalist grids. Ideal for journaling, wrapping gifts, bullet journaling, scrapbooking, and adding a touch of personality to school materials.",
+    "price": 299,
+    "imageUrl": "https://images.unsplash.com/photo-1603539947678-cd3954ed515d?q=80&w=2070&auto=format&fit=crop",
+    "category": "Decorations",
+    "stock": 25
+  },
+  {
+    "id": "8",
+    "name": "Vintage Brass Mechanical Pencil Set",
+    "description": "Charming retro-inspired brass mechanical pencil with an elegant hexagonal barrel. Features a smooth-clicking lead advancement, high-grade 0.5mm graphite leads, and a luxurious vintage tin storage case.",
+    "price": 399,
+    "imageUrl": "https://i1-c.pinimg.com/736x/15/be/6c/15be6c18417300a61ea1c6d268a6c4ad.jpg",
+    "category": "Pens & Markers",
+    "stock": 10
+  },
+  {
+    "name": "Classmate noteboook",
+    "description": "Smooth writing note book ",
+    "price": 60,
+    "imageUrl": "https://imgs.search.brave.com/48r2QY9Ks5tG2g4Ece3LRNQLYAgCxkKoE_eiCXHEolw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aWlt/Zy50aXN0YXRpYy5j/b20vZnAvMS8wMDQv/OTUwL2NsYXNzbWF0/ZS1ub3RlLWJvb2st/Zm9yLWhvbWV3b3Jr/LTM4OS5qcGc",
+    "category": "NOtebook",
+    "stock": 10,
+    "id": "PROD-G7GYXIT"
+  }
+]
