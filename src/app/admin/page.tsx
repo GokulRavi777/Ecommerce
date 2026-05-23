@@ -223,14 +223,14 @@ export default function AdminPage() {
                     <div className="space-y-2">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Price (₹)</label>
                       <div className="relative">
-                        <input required type="number" step="0.01" value={formData.price || ''} onChange={e => setFormData({...formData, price: parseFloat(e.target.value)})} className="w-full pl-9 pr-3 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:bg-white transition-all font-medium text-slate-800" placeholder="0.00" />
+                        <input required type="number" step="0.01" value={formData.price || ''} onChange={e => setFormData({...formData, price: e.target.value === '' ? formData.price : parseFloat(e.target.value)})} className="w-full pl-9 pr-3 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:bg-white transition-all font-medium text-slate-800" placeholder="0.00" />
                         <DollarSign className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest block">Stock</label>
                       <div className="relative">
-                        <input required type="number" value={formData.stock || ''} onChange={e => setFormData({...formData, stock: parseInt(e.target.value)})} className="w-full pl-9 pr-3 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:bg-white transition-all font-medium text-slate-800" placeholder="0" />
+                        <input required type="number" value={formData.stock || ''} onChange={e => setFormData({...formData, stock: e.target.value === '' ? formData.stock : parseInt(e.target.value)})} className="w-full pl-9 pr-3 py-3 bg-slate-50 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:bg-white transition-all font-medium text-slate-800" placeholder="0" />
                         <Archive className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                       </div>
                     </div>

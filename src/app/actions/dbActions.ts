@@ -69,7 +69,8 @@ export async function updateProductAction(id: string, updatedFields: Partial<Pro
     if (index === -1) throw new Error('Product not found');
 
     // Create a sanitized copy of incoming fields to avoid invalid JSON and accidental id changes
-    const sanitized: Partial<Product> = { ...updatedFields };
+    const sanitizedEntries = Object.entries(updatedFields).filter(([, value]) => value !== undefined);
+    const sanitized = Object.fromEntries(sanitizedEntries) as Partial<Product>;
     // Never allow id to be changed via update payload
     if ('id' in sanitized) delete (sanitized as any).id;
 
