@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from "next/navigation";
+import { updateProductAction } from "@/app/actions/dbActions";
 import { useStore } from '@/store/useStore';
 import { useState, useEffect, useMemo } from 'react';
 import { 
@@ -13,6 +15,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
 
 export default function AdminPage() {
+    const router = useRouter();
   const { 
     products, fetchProducts, addProduct, updateProduct, deleteProduct, 
     orders, fetchOrders, updateOrderStatus 
@@ -67,37 +70,57 @@ export default function AdminPage() {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    try {
-      if (isEditing) {
-        await updateProduct(isEditing, formData);
-        toast.success(`"${formData.name}" updated successfully!`);
-        setIsEditing(null);
-      } else {
-        const newProduct: Product = {
-          ...formData,
-          id: `PROD-${Math.random().toString(36).substring(2, 9).toUpperCase()}`,
-        } as Product;
-        await addProduct(newProduct);
-        toast.success(`"${formData.name}" added to store!`);
-      }
-      setFormData({ name: '', description: '', price: 0, imageUrl: '', category: '', stock: 0 });
-    } catch (err) {
-      // Log and surface the real error message when available to aid debugging
-      // eslint-disable-next-line no-console
-      console.error('Admin submit error:', err);
-      const msg = err && (err as any).message ? (err as any).message : 'Operation failed. Please try again.';
-      toast.error(msg);
-    } finally {
-      setIsSubmitting(false);
+  e.preventDefault();
+  setIsSubmitting(true);
+
+  try {
+    if (isEditing) {
+      // ✅ SERVER UPDATE (correct)
+      await updateProductAction(isEditing, formData);
+
+      // ✅ sync Zustand
+      await fetchProducts();
+
+      toast.success(`"${formData.name}" updated successfully!`);
+      setIsEditing(null);
+
+    } else {
+      const newProduct: Product = {
+        ...formData,
+        id: `PROD-${Math.random().toString(36).substring(2, 9).toUpperCase()}`,
+      } as Product;
+
+      await addProduct(newProduct);
+      toast.success(`"${formData.name}" added to store!`);
     }
-  };
+
+    setFormData({
+      name: '',
+      description: '',
+      price: 0,
+      imageUrl: '',
+      category: '',
+      stock: 0,
+    });
+
+    // ✅ force UI refresh
+    router.refresh();
+
+  } catch (err) {
+    console.error('Admin submit error:', err);
+    toast.error('Operation failed');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const editProduct = (product: Product) => {
     setIsEditing(product.id);
     setFormData(product);
   };
+  ;
+
+
 
   const handleOrderChange = async (orderId: string, status: OrderStatus) => {
     try {
