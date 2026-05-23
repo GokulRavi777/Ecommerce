@@ -84,7 +84,11 @@ export default function AdminPage() {
       }
       setFormData({ name: '', description: '', price: 0, imageUrl: '', category: '', stock: 0 });
     } catch (err) {
-      toast.error('Operation failed. Please try again.');
+      // Log and surface the real error message when available to aid debugging
+      // eslint-disable-next-line no-console
+      console.error('Admin submit error:', err);
+      const msg = err && (err as any).message ? (err as any).message : 'Operation failed. Please try again.';
+      toast.error(msg);
     } finally {
       setIsSubmitting(false);
     }

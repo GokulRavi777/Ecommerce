@@ -88,7 +88,15 @@ export async function updateProductAction(id: string, updatedFields: Partial<Pro
     const updatedProduct = { ...products[index], ...sanitized };
     products[index] = updatedProduct;
 
-    await fs.writeFile(PRODUCTS_PATH, JSON.stringify(products, null, 2), 'utf-8');
+    try {
+      await fs.writeFile(PRODUCTS_PATH, JSON.stringify(products, null, 2), 'utf-8');
+    } catch (writeErr) {
+      console.error('Failed writing products file during update:', writeErr);
+      console.error('Update payload:', sanitized);
+      console.error('Existing product:', products[index]);
+      throw writeErr;
+    }
+
     revalidatePath('/');
     revalidatePath('/products');
     revalidatePath(`/products/${id}`);
