@@ -6,7 +6,7 @@
     "price": 499,
     "imageUrl": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?q=80&w=1976&auto=format&fit=crop",
     "category": "Pens & Markers",
-    "stock": 13
+    "stock": 12
   },
   {
     "id": "2",
@@ -15,7 +15,7 @@
     "price": 899,
     "imageUrl": "https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=1970&auto=format&fit=crop",
     "category": "Notebooks",
-    "stock": 8
+    "stock": 7
   },
   {
     "id": "3",

@@ -1,5 +1,41 @@
 [
   {
+    "id": "ORD-99I2EUUEN",
+    "date": "2026-05-23T08:10:47.341Z",
+    "items": [
+      {
+        "id": "1",
+        "name": "Dual-Tip Pastel Brush Pens",
+        "description": "Premium 12-pack brush pens featuring a flexible brush tip on one end and a fine 0.4mm bullet tip on the other. Ideal for modern calligraphy, hand lettering, and journal illustration in soft, beautiful pastel colors.",
+        "price": 499,
+        "imageUrl": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?q=80&w=1976&auto=format&fit=crop",
+        "category": "Pens & Markers",
+        "stock": 13,
+        "quantity": 1
+      },
+      {
+        "id": "2",
+        "name": "Leather-Bound Bullet Journal",
+        "description": "Exquisite A5 dotted journal wrapped in cruelty-free vegan leather. Featuring ultra-thick 160 GSM ink-proof paper, a secure elastic band, two ribbon markers, and a handy back pocket. Designed to keep your ideas organized.",
+        "price": 899,
+        "imageUrl": "https://images.unsplash.com/photo-1531346878377-a5be20888e57?q=80&w=1970&auto=format&fit=crop",
+        "category": "Notebooks",
+        "stock": 8,
+        "quantity": 1
+      }
+    ],
+    "total": 1398,
+    "status": "Delivered",
+    "shippingDetails": {
+      "firstName": "Gokul",
+      "lastName": "R",
+      "address": "Chennai Institute of Technology",
+      "city": "chennai",
+      "zipCode": "600069"
+    },
+    "paymentMethod": "**** **** **** 1423"
+  },
+  {
     "id": "ORD-DI4DDRKKC",
     "date": "2026-05-22T02:34:12.377Z",
     "items": [
@@ -41,7 +77,7 @@
       }
     ],
     "total": 499,
-    "status": "Pending",
+    "status": "Delivered",
     "shippingDetails": {
       "firstName": "Gokul",
       "lastName": "R",
