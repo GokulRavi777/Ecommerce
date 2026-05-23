@@ -68,7 +68,24 @@ export async function updateProductAction(id: string, updatedFields: Partial<Pro
     const index = products.findIndex(p => p.id === id);
     if (index === -1) throw new Error('Product not found');
 
-    const updatedProduct = { ...products[index], ...updatedFields };
+    // Create a sanitized copy of incoming fields to avoid invalid JSON and accidental id changes
+    const sanitized: Partial<Product> = { ...updatedFields };
+    // Never allow id to be changed via update payload
+    if ('id' in sanitized) delete (sanitized as any).id;
+
+    // Coerce numeric fields and ignore invalid values (preserve existing values)
+    if (sanitized.price !== undefined) {
+      const num = Number(sanitized.price as unknown);
+      if (Number.isFinite(num)) sanitized.price = num;
+      else delete sanitized.price;
+    }
+    if (sanitized.stock !== undefined) {
+      const num = Number(sanitized.stock as unknown);
+      if (Number.isFinite(num)) sanitized.stock = Math.max(0, Math.trunc(num));
+      else delete sanitized.stock;
+    }
+
+    const updatedProduct = { ...products[index], ...sanitized };
     products[index] = updatedProduct;
 
     await fs.writeFile(PRODUCTS_PATH, JSON.stringify(products, null, 2), 'utf-8');
@@ -79,7 +96,8 @@ export async function updateProductAction(id: string, updatedFields: Partial<Pro
     return updatedProduct;
   } catch (error) {
     console.error('Error updating product in database:', error);
-    throw new Error('Failed to update product');
+    // Surface original error message when possible for easier debugging
+    throw new Error(`Failed to update product: ${error instanceof Error ? error.message : String(error)}`);
   }
 }
 
